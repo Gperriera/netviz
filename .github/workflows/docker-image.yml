@@ -25,4 +25,4 @@ jobs:
       run: docker build . --file Dockerfile --tag gianlucaperriera/netviz:$(date +%s)
       
     - name: Docker Push
-      run: docker push gianlucaperriera/netviz
+      run: docker push gianlucaperriera/netviz:$(date +%s)
