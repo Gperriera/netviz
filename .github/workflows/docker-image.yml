@@ -23,7 +23,7 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag gianlucaperriera/netviz:$DOCKER_TAG 
+      run: docker build . --file Dockerfile --tag gianlucaperriera/netviz
       
     - name: Docker Push
-      run: docker push gianlucaperriera/netviz:$DOCKER_TAG 
+      run: docker push gianlucaperriera/netviz
