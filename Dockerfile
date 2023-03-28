@@ -1,6 +1,5 @@
 FROM ubuntu:14.04
 
-ARG NETVIZ_ZIP_PKG
 RUN groupadd -r appd-netviz && useradd -r -g appd-netviz appd-netviz
 
 RUN apt-get update && apt-get install -y \
@@ -15,10 +14,10 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /netviz-agent
 
 # copy NetViz agent contents
-COPY $NETVIZ_ZIP_PKG .
+COPY appd-netviz-x64-linux-23.3.0.2669.zip .
 
 # run the agent install script and disable netlib
-RUN unzip $NETVIZ_ZIP_PKG && ./install.sh \
+RUN unzip appd-netviz-x64-linux-23.3.0.2669.zip && ./install.sh \
     && sed -i -e "s|enable_netlib = 1|enable_netlib = 0|g" ./conf/agent_config.lua \
     && sed -i -e "s|WEBSERVICE_IP=.*|WEBSERVICE_IP=\"0.0.0.0\"|g" ./conf/agent_config.lua
 
